@@ -2,8 +2,8 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
 import { X, Sparkles, Rocket } from 'lucide-react'
 
 interface WaitlistModalProps {
@@ -77,7 +77,13 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
                     key={i}
                     className="absolute w-64 h-64 rounded-full"
                     style={{
-                      background: `radial-gradient(circle, ${i === 0 ? 'rgba(59,130,246,0.1)' : i === 1 ? 'rgba(147,51,234,0.1)' : 'rgba(236,72,153,0.1)'} 0%, transparent 70%)`,
+                      background: `radial-gradient(circle, ${
+                        i === 0
+                          ? 'rgba(59,130,246,0.1)'
+                          : i === 1
+                          ? 'rgba(147,51,234,0.1)'
+                          : 'rgba(236,72,153,0.1)'
+                      } 0%, transparent 70%)`,
                       left: `${Math.random() * 100}%`,
                       top: `${Math.random() * 100}%`,
                     }}
@@ -89,7 +95,7 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
                     transition={{
                       duration: 15 + i * 2,
                       repeat: Infinity,
-                      ease: "linear",
+                      ease: 'linear',
                     }}
                   />
                 ))}
@@ -119,7 +125,10 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
                           <Rocket className="w-12 h-12 text-blue-400 mx-auto mb-2" />
                           <motion.div
                             className="absolute inset-0 rounded-full bg-blue-400/20 blur-xl"
-                            animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }}
+                            animate={{
+                              scale: [1, 1.2, 1],
+                              opacity: [0.5, 0.8, 0.5],
+                            }}
                             transition={{ duration: 2, repeat: Infinity }}
                           />
                         </div>
@@ -147,7 +156,7 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
                           required
                         />
                       </motion.div>
-                      
+
                       <motion.div
                         initial={{ x: 20, opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
@@ -170,7 +179,7 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
                         className="relative group"
                       >
                         <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200" />
-                        <Button 
+                        <Button
                           type="submit"
                           className="relative w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white h-11 font-medium shadow-[0_0_20px_-5px_rgba(59,130,246,0.5)]"
                         >
@@ -187,9 +196,9 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
                     className="py-8 text-center"
                   >
                     <motion.div
-                      animate={{ 
+                      animate={{
                         y: [0, -10, 0],
-                        rotate: [0, 5, -5, 0]
+                        rotate: [0, 5, -5, 0],
                       }}
                       transition={{ duration: 2, repeat: Infinity }}
                       className="mb-4 inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r from-green-500/20 to-green-500/30 text-green-400 shadow-[0_0_20px_-5px_rgba(34,197,94,0.5)]"
@@ -211,4 +220,4 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
       )}
     </AnimatePresence>
   )
-} 
+}
