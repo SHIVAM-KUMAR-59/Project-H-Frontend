@@ -13,7 +13,7 @@ export default function Navbar() {
     <header className="fixed top-0 w-full z-40 pt-6">
       <div className="container flex h-16 items-center">
         {/* Logo */}
-        <Link href="/" className="flex items-center space-x-2 -ml-40">
+        <Link href="/" className="flex items-center space-x-2 -ml-auto">
           <Smartphone className="h-6 w-6 text-white" />
           <span className="font-bold text-white">AppName</span>
         </Link>
@@ -46,7 +46,7 @@ export default function Navbar() {
         </div>
 
         {/* Action Button */}
-        <div className="ml-auto mr-[-10rem]">
+        <div className="ml-auto">
           <Button 
             onClick={() => setIsModalOpen(true)}
             className="bg-white text-black hover:bg-zinc-200"
