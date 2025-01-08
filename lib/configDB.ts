@@ -1,6 +1,10 @@
 import mongoose from 'mongoose'
 
 const MONGODB_URI = process.env.MONGO_URI
+<<<<<<< HEAD
+=======
+console.log('MONGODB_URI', MONGODB_URI)
+>>>>>>> fb972fb5a73b870511ca743142d121d493cdd3f2
 
 if (!MONGODB_URI) {
   throw new Error('Please define the MONGODB_URI environment variable')

@@ -16,6 +16,11 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
   const [email, setEmail] = useState('')
   const [name, setName] = useState('')
   const [submitted, setSubmitted] = useState(false)
+  // 2 Extra states for managing the message
+  const [message, setMessage] = useState('Welcome Aboard! 🚀')
+  const [subMessage, setSubMessage] = useState(
+    'Your journey to the future begins now.',
+  )
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -29,6 +34,7 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
         body: JSON.stringify({ name, email }),
       })
 
+<<<<<<< HEAD
       const data = await response.json()
 
       if (!response.ok) {
@@ -38,21 +44,79 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
       setSubmitted(true)
       toast.success(`Welcome ${name}! You've joined the waitlist!`, {
         position: "bottom-right",
+=======
+    try {
+      const response = await fetch('/api/createUser', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, name }),
+      })
+
+      const responseData = await response.json()
+
+      if (response.status === 200) {
+        // Show success toast with dynamic message
+        console.log('success')
+        toast.success(`Welcome ${name}! ${responseData.message}`, {
+          position: 'bottom-right',
+          autoClose: 3000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        })
+        // Setting the message and subMessage in case of success
+        setMessage('')
+        setSubMessage('')
+      } else {
+        // Setting the message and subMessage in case of error
+        toast.error(responseData.message || 'Error joining waitlist', {
+          position: 'bottom-right',
+          autoClose: 3000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        })
+
+        setMessage('An Error Occurred, Please Try Again!')
+        setSubMessage('Please check your credentials and try again')
+      }
+    } catch (error) {
+      toast.error('Something went wrong. Please try again later.', {
+        position: 'bottom-right',
+>>>>>>> fb972fb5a73b870511ca743142d121d493cdd3f2
         autoClose: 3000,
         hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
+<<<<<<< HEAD
       });
 
+=======
+        progress: undefined,
+      })
+      // Setting the message and subMessage in case of system error
+      setMessage('An Error Occurred, Please Try Again!')
+      setSubMessage('Please check your credentials and try again')
+    } finally {
+>>>>>>> fb972fb5a73b870511ca743142d121d493cdd3f2
       setTimeout(() => {
         onClose()
         setSubmitted(false)
         setEmail('')
         setName('')
       }, 2000)
+<<<<<<< HEAD
     } catch (error) {
       toast.error(error instanceof Error ? error.message : 'Failed to join waitlist')
+=======
+>>>>>>> fb972fb5a73b870511ca743142d121d493cdd3f2
     }
   }
 
@@ -180,10 +244,10 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
                       <Rocket className="w-8 h-8" />
                     </motion.div>
                     <h3 className="text-2xl font-semibold text-white mb-2 [text-shadow:_0_1px_20px_rgb(59_130,246,_30%)]">
-                      Welcome Aboard! 🚀
+                      {message}
                     </h3>
                     <p className="text-gray-300 [text-shadow:_0_1px_10px_rgb(255_255_255_/_10%)]">
-                      Your journey to the future begins now.
+                      {subMessage}
                     </p>
                   </motion.div>
                 )}
