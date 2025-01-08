@@ -10,7 +10,7 @@ const WaitlistUserSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-})
+}, { timestamps: true })
 
 export default mongoose.models.WaitlistUser ||
   mongoose.model('WaitlistUser', WaitlistUserSchema)

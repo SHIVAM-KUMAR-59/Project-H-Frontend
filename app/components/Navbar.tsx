@@ -9,6 +9,20 @@ import WaitlistModal from './WaitlistModal'
 export default function Navbar() {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
+  const scrollToSection = (href: string) => {
+    const element = document.querySelector(href)
+    if (element) {
+      const offset = 100 // Increased offset to account for navbar height + padding
+      const elementPosition = element.getBoundingClientRect().top
+      const offsetPosition = elementPosition + window.scrollY - offset
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      })
+    }
+  }
+
   return (
     <header className="fixed top-0 w-full z-40 pt-6">
       <div className="container flex h-16 items-center">
@@ -21,33 +35,56 @@ export default function Navbar() {
         {/* Navigation Links */}
         <div className="fixed left-1/2 -translate-x-1/2 bg-zinc-800/50 rounded-full px-7 py-2.5">
           <nav className="flex items-center space-x-16 text-[15px] font-medium">
-            <Link 
-              href="#home" 
+            <a 
+              href="#home"
+              onClick={(e) => {
+                e.preventDefault()
+                scrollToSection('#home')
+              }}
               className="text-white hover:text-white/90 transition-colors relative group"
             >
               Home
               <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-white/80 group-hover:w-full transition-all duration-300" />
-            </Link>
-            <Link 
-              href="#vision" 
+            </a>
+            <a 
+              href="#features"
+              onClick={(e) => {
+                e.preventDefault()
+                scrollToSection('#features')
+              }}
               className="text-white hover:text-white/90 transition-colors relative group"
             >
-              Vision
+              Features
               <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-white/80 group-hover:w-full transition-all duration-300" />
-            </Link>
-            <Link 
-              href="#contact" 
+            </a>
+            <a 
+              href="#team"
+              onClick={(e) => {
+                e.preventDefault()
+                scrollToSection('#team')
+              }}
+              className="text-white hover:text-white/90 transition-colors relative group"
+            >
+              Team
+              <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-white/80 group-hover:w-full transition-all duration-300" />
+            </a>
+            <a 
+              href="#contact"
+              onClick={(e) => {
+                e.preventDefault()
+                scrollToSection('#contact')
+              }}
               className="text-white hover:text-white/90 transition-colors relative group"
             >
               Contact
               <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-white/80 group-hover:w-full transition-all duration-300" />
-            </Link>
+            </a>
           </nav>
         </div>
 
         {/* Action Button */}
         <div className="ml-auto mr-[-10rem]">
-          <Button 
+          <Button
             onClick={() => setIsModalOpen(true)}
             className="bg-white text-black hover:bg-zinc-200"
           >

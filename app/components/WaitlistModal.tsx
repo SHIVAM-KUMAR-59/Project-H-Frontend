@@ -17,27 +17,43 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
   const [name, setName] = useState('')
   const [submitted, setSubmitted] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setSubmitted(true)
+    
+    try {
+      const response = await fetch('/api/createUser', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, email }),
+      })
 
-    // Show toast notification
-    toast.success(`Welcome ${name}! You've joined the waitlist!`, {
-      position: "bottom-right",
-      autoClose: 3000,
-      hideProgressBar: true,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
+      const data = await response.json()
 
-    setTimeout(() => {
-      onClose()
-      setSubmitted(false)
-      setEmail('')
-      setName('')
-    }, 2000)
+      if (!response.ok) {
+        throw new Error(data.message || 'Something went wrong')
+      }
+
+      setSubmitted(true)
+      toast.success(`Welcome ${name}! You've joined the waitlist!`, {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
+
+      setTimeout(() => {
+        onClose()
+        setSubmitted(false)
+        setEmail('')
+        setName('')
+      }, 2000)
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : 'Failed to join waitlist')
+    }
   }
 
   return (

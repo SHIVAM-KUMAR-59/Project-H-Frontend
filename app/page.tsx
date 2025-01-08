@@ -25,6 +25,10 @@ const InfiniteCarousel = dynamic(() => import("./components/InfiniteCarousel"), 
   ssr: false
 })
 
+const ContactSection = dynamic(() => import("./components/ContactSection"), {
+  ssr: false
+})
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-zinc-950 overflow-hidden">
@@ -47,11 +51,9 @@ export default function Home() {
         <FeaturesSection />
       </Suspense>
 
-      <div className="relative">
-        <Suspense fallback={null}>
-          <InfiniteCarousel />
-        </Suspense>
-      </div>
+      <Suspense fallback={null}>
+        <ContactSection />
+      </Suspense>
     </main>
   )
 }

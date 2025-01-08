@@ -9,14 +9,17 @@ const handler = async (
   await connectDB()
 
   try {
-    const users = await waitlistUser.find()
+    const users = await waitlistUser.find().sort({ _id: -1 })
 
     return res
       .status(200)
       .json({ message: 'Users fetched successfully', data: users })
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error fetching users:', error)
-    return res.status(500).json({ message: 'Internal Server Error', error: error.message })
+    return res.status(500).json({ 
+      message: 'Internal Server Error', 
+      error: error instanceof Error ? error.message : 'Unknown error'
+    })
   }
 }
 
