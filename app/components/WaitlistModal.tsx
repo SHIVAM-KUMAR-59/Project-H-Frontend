@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { X, Sparkles, Rocket } from 'lucide-react'
+import { toast } from 'react-toastify'
 
 interface WaitlistModalProps {
   isOpen: boolean
@@ -19,6 +20,18 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     setSubmitted(true)
+
+    // Show toast notification
+    toast.success(`Welcome ${name}! You've joined the waitlist!`, {
+      position: "bottom-right",
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+
     setTimeout(() => {
       onClose()
       setSubmitted(false)
@@ -39,30 +52,6 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
             className="absolute inset-0 bg-black/60 backdrop-blur-md"
           />
 
-          {/* Glowing stars background */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            {[...Array(20)].map((_, i) => (
-              <motion.div
-                key={i}
-                className="absolute w-1 h-1 bg-white rounded-full"
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                  boxShadow: '0 0 4px 2px rgba(255, 255, 255, 0.3)',
-                }}
-                animate={{
-                  opacity: [0.2, 0.8, 0.2],
-                  scale: [1, 1.2, 1],
-                }}
-                transition={{
-                  duration: 2 + Math.random() * 2,
-                  repeat: Infinity,
-                  delay: Math.random() * 2,
-                }}
-              />
-            ))}
-          </div>
-
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -70,37 +59,6 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
             className="relative w-full max-w-lg mx-4 sm:mx-auto"
           >
             <div className="bg-gradient-to-b from-zinc-900/95 to-zinc-950/95 border border-zinc-800/50 rounded-2xl overflow-hidden backdrop-blur-xl shadow-[0_0_50px_-12px_rgba(59,130,246,0.3)]">
-              {/* Animated glow orbs */}
-              <div className="absolute inset-0 overflow-hidden">
-                {[...Array(3)].map((_, i) => (
-                  <motion.div
-                    key={i}
-                    className="absolute w-64 h-64 rounded-full"
-                    style={{
-                      background: `radial-gradient(circle, ${
-                        i === 0
-                          ? 'rgba(59,130,246,0.1)'
-                          : i === 1
-                          ? 'rgba(147,51,234,0.1)'
-                          : 'rgba(236,72,153,0.1)'
-                      } 0%, transparent 70%)`,
-                      left: `${Math.random() * 100}%`,
-                      top: `${Math.random() * 100}%`,
-                    }}
-                    animate={{
-                      x: ['0%', '100%', '0%'],
-                      y: ['0%', '100%', '0%'],
-                      scale: [1, 1.2, 1],
-                    }}
-                    transition={{
-                      duration: 15 + i * 2,
-                      repeat: Infinity,
-                      ease: 'linear',
-                    }}
-                  />
-                ))}
-              </div>
-
               <div className="relative p-8">
                 <button
                   onClick={onClose}
@@ -133,7 +91,7 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
                           />
                         </div>
                       </motion.div>
-                      <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400 [text-shadow:_0_1px_20px_rgb(59_130_246_/_30%)]">
+                      <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400 [text-shadow:_0_1px_20px_rgb(59_130,246,_30%)]">
                         Join the Future
                       </h2>
                       <p className="text-gray-300 drop-shadow-sm [text-shadow:_0_1px_10px_rgb(255_255_255_/_10%)]">
@@ -205,7 +163,7 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
                     >
                       <Rocket className="w-8 h-8" />
                     </motion.div>
-                    <h3 className="text-2xl font-semibold text-white mb-2 [text-shadow:_0_1px_20px_rgb(59_130_246_/_30%)]">
+                    <h3 className="text-2xl font-semibold text-white mb-2 [text-shadow:_0_1px_20px_rgb(59_130,246,_30%)]">
                       Welcome Aboard! 🚀
                     </h3>
                     <p className="text-gray-300 [text-shadow:_0_1px_10px_rgb(255_255_255_/_10%)]">

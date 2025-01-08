@@ -15,8 +15,8 @@ const handler = async (
       .status(200)
       .json({ message: 'Users fetched successfully', data: users })
   } catch (error) {
-    console.error(error)
-    return res.status(500).json({ message: 'Internal Server Error' })
+    console.error('Error fetching users:', error)
+    return res.status(500).json({ message: 'Internal Server Error', error: error.message })
   }
 }
 

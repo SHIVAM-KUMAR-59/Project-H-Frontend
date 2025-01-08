@@ -5,34 +5,40 @@ import { motion } from 'framer-motion'
 import { Shield, Zap, Bell, RefreshCw } from 'lucide-react'
 import FlipMove from 'react-flip-move'
 
-// Simulated email list for the audit log
-const SAMPLE_EMAILS = [
-  'sarah.parker@gmail.com',
-  'john.doe@outlook.com',
-  'emma.wilson@yahoo.com',
-  'alex.turner@hotmail.com',
-  'mike.ross@gmail.com',
-  'rachel.green@mail.com',
-  'david.miller@outlook.com',
-  'lisa.white@gmail.com',
-  'james.brown@yahoo.com',
-  'olivia.taylor@mail.com'
-]
+// API endpoint to fetch waitlist users
+const API_URL = '/api/getAllUser'; // Your API endpoint
 
 export default function FeaturesSection() {
   const [auditLogs, setAuditLogs] = useState<string[]>([])
 
   useEffect(() => {
-    // Initial logs
-    setAuditLogs(SAMPLE_EMAILS.slice(0, 5))
-    
-    const interval = setInterval(() => {
-      const randomEmail = SAMPLE_EMAILS[Math.floor(Math.random() * SAMPLE_EMAILS.length)]
-      setAuditLogs(prev => [randomEmail, ...prev.slice(0, 9)]) // Keep max 10 items
-    }, 3000)
+    const fetchWaitlist = async () => {
+      try {
+        const response = await fetch(API_URL);
+        if (!response.ok) {
+          throw new Error('Network response was not ok'); // Handle non-200 responses
+        }
+        const data = await response.json();
+        if (data.data) {
+          setAuditLogs(data.data.map((user: { email: string }) => user.email)); // Assuming the user object has an email field
+        }
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          console.error('Error fetching waitlist:', error.message);
+        } else {
+          console.error('Error fetching waitlist:', error);
+        }
+      }
+    };
 
-    return () => clearInterval(interval)
-  }, [])
+    fetchWaitlist();
+
+    const interval = setInterval(() => {
+      fetchWaitlist(); // Optionally refetch every few seconds
+    }, 30000); // Fetch every 30 seconds
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section className="relative py-24 overflow-hidden">
