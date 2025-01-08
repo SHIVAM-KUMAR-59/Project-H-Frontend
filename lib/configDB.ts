@@ -1,13 +1,11 @@
 import mongoose from 'mongoose'
 
-const MONGODB_URI = process.env.MONGO_URI
-<<<<<<< HEAD
-=======
-console.log('MONGODB_URI', MONGODB_URI)
->>>>>>> fb972fb5a73b870511ca743142d121d493cdd3f2
+const MONGODB_URI = process.env.MONGODB_URI || process.env.MONGO_URI
 
 if (!MONGODB_URI) {
-  throw new Error('Please define the MONGODB_URI environment variable')
+  throw new Error(
+    'Please define the MONGODB_URI environment variable inside .env.local'
+  )
 }
 
 declare global {
@@ -36,7 +34,10 @@ async function connectDB() {
       bufferCommands: false,
     }
 
-    cached.promise = mongoose.connect(MONGODB_URI!, opts)
+    cached.promise = mongoose.connect(MONGODB_URI!, opts).catch((error) => {
+      console.error('Failed to connect to MongoDB:', error)
+      throw error
+    })
   }
 
   try {

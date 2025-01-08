@@ -16,11 +16,6 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
   const [email, setEmail] = useState('')
   const [name, setName] = useState('')
   const [submitted, setSubmitted] = useState(false)
-  // 2 Extra states for managing the message
-  const [message, setMessage] = useState('Welcome Aboard! 🚀')
-  const [subMessage, setSubMessage] = useState(
-    'Your journey to the future begins now.',
-  )
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -34,7 +29,6 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
         body: JSON.stringify({ name, email }),
       })
 
-<<<<<<< HEAD
       const data = await response.json()
 
       if (!response.ok) {
@@ -44,79 +38,21 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
       setSubmitted(true)
       toast.success(`Welcome ${name}! You've joined the waitlist!`, {
         position: "bottom-right",
-=======
-    try {
-      const response = await fetch('/api/createUser', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, name }),
-      })
-
-      const responseData = await response.json()
-
-      if (response.status === 200) {
-        // Show success toast with dynamic message
-        console.log('success')
-        toast.success(`Welcome ${name}! ${responseData.message}`, {
-          position: 'bottom-right',
-          autoClose: 3000,
-          hideProgressBar: true,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        })
-        // Setting the message and subMessage in case of success
-        setMessage('')
-        setSubMessage('')
-      } else {
-        // Setting the message and subMessage in case of error
-        toast.error(responseData.message || 'Error joining waitlist', {
-          position: 'bottom-right',
-          autoClose: 3000,
-          hideProgressBar: true,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        })
-
-        setMessage('An Error Occurred, Please Try Again!')
-        setSubMessage('Please check your credentials and try again')
-      }
-    } catch (error) {
-      toast.error('Something went wrong. Please try again later.', {
-        position: 'bottom-right',
->>>>>>> fb972fb5a73b870511ca743142d121d493cdd3f2
         autoClose: 3000,
         hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
-<<<<<<< HEAD
-      });
-
-=======
-        progress: undefined,
       })
-      // Setting the message and subMessage in case of system error
-      setMessage('An Error Occurred, Please Try Again!')
-      setSubMessage('Please check your credentials and try again')
-    } finally {
->>>>>>> fb972fb5a73b870511ca743142d121d493cdd3f2
+
       setTimeout(() => {
         onClose()
         setSubmitted(false)
         setEmail('')
         setName('')
       }, 2000)
-<<<<<<< HEAD
     } catch (error) {
       toast.error(error instanceof Error ? error.message : 'Failed to join waitlist')
-=======
->>>>>>> fb972fb5a73b870511ca743142d121d493cdd3f2
     }
   }
 
@@ -180,51 +116,32 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
                     </div>
 
                     <form onSubmit={handleSubmit} className="space-y-4">
-                      <motion.div
-                        initial={{ x: -20, opacity: 0 }}
-                        animate={{ x: 0, opacity: 1 }}
-                        transition={{ delay: 0.1 }}
-                      >
+                      <div>
                         <Input
                           type="text"
                           placeholder="Your name"
                           value={name}
                           onChange={(e) => setName(e.target.value)}
-                          className="w-full bg-zinc-800/50 border-zinc-700/50 text-white placeholder:text-gray-500 focus-visible:ring-blue-500 focus-visible:border-blue-500 shadow-[0_0_10px_-3px_rgba(59,130,246,0.2)]"
                           required
+                          className="bg-zinc-800/50 border-zinc-700/50 text-white placeholder:text-gray-400"
                         />
-                      </motion.div>
-
-                      <motion.div
-                        initial={{ x: 20, opacity: 0 }}
-                        animate={{ x: 0, opacity: 1 }}
-                        transition={{ delay: 0.2 }}
-                      >
+                      </div>
+                      <div>
                         <Input
                           type="email"
                           placeholder="Your email"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
-                          className="w-full bg-zinc-800/50 border-zinc-700/50 text-white placeholder:text-gray-500 focus-visible:ring-blue-500 focus-visible:border-blue-500 shadow-[0_0_10px_-3px_rgba(59,130,246,0.2)]"
                           required
+                          className="bg-zinc-800/50 border-zinc-700/50 text-white placeholder:text-gray-400"
                         />
-                      </motion.div>
-
-                      <motion.div
-                        initial={{ y: 20, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 0.3 }}
-                        className="relative group"
+                      </div>
+                      <Button
+                        type="submit"
+                        className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white border-0"
                       >
-                        <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200" />
-                        <Button
-                          type="submit"
-                          className="relative w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white h-11 font-medium shadow-[0_0_20px_-5px_rgba(59,130,246,0.5)]"
-                        >
-                          <Sparkles className="w-4 h-4 mr-2" />
-                          Join Waitlist
-                        </Button>
-                      </motion.div>
+                        Join Waitlist
+                      </Button>
                     </form>
                   </motion.div>
                 ) : (
@@ -241,13 +158,13 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
                       transition={{ duration: 2, repeat: Infinity }}
                       className="mb-4 inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r from-green-500/20 to-green-500/30 text-green-400 shadow-[0_0_20px_-5px_rgba(34,197,94,0.5)]"
                     >
-                      <Rocket className="w-8 h-8" />
+                      <Sparkles className="w-8 h-8" />
                     </motion.div>
                     <h3 className="text-2xl font-semibold text-white mb-2 [text-shadow:_0_1px_20px_rgb(59_130,246,_30%)]">
-                      {message}
+                      Welcome Aboard! 🚀
                     </h3>
                     <p className="text-gray-300 [text-shadow:_0_1px_10px_rgb(255_255_255_/_10%)]">
-                      {subMessage}
+                      Your journey to the future begins now.
                     </p>
                   </motion.div>
                 )}
