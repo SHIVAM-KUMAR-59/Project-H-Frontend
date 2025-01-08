@@ -9,14 +9,14 @@ const handler = async (
   await connectDB()
 
   try {
-    const users = await waitlistUser.find()
-
+    const users = await waitlistUser.find({}, '-email') // Fetch users without email
     return res
       .status(200)
       .json({ message: 'Users fetched successfully', data: users })
   } catch (error) {
-    console.error('Error fetching users:', error)
-    return res.status(500).json({ message: 'Internal Server Error', error: error.message })
+    return res
+      .status(500)
+      .json({ message: 'Internal Server Error', error: error.message })
   }
 }
 
