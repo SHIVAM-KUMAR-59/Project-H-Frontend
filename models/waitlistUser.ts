@@ -12,12 +12,10 @@ const WaitlistUserSchema = new mongoose.Schema(
       unique: true,
     },
     // To Store the messages
-    // message: [
-    //   {
-    //     type: String,
-    //     ref: 'Message',
-    //   },
-    // ],
+    message: {
+      type: String,
+      default: null,
+    },
   },
   { timestamps: true },
 )
