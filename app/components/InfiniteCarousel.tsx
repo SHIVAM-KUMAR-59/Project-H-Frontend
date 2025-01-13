@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from "framer-motion"
+import { motion } from 'framer-motion'
 
 interface InfiniteCarouselProps {
   section?: 'hero' | 'features' | 'contact'
@@ -8,26 +8,28 @@ interface InfiniteCarouselProps {
 
 const sectionTexts = {
   hero: [
-    "REVOLUTIONARY MOBILE EXPERIENCE",
-    "TRANSFORM YOUR DIGITAL LIFESTYLE",
-    "JOIN THOUSANDS OF EARLY ADOPTERS",
-    "SEAMLESS INTEGRATION",
+    'REVOLUTIONARY MOBILE EXPERIENCE',
+    'TRANSFORM YOUR DIGITAL LIFESTYLE',
+    'JOIN THOUSANDS OF EARLY ADOPTERS',
+    'SEAMLESS INTEGRATION',
   ],
   features: [
-    "ENHANCED PRODUCTIVITY",
-    "BEAUTIFUL DESIGN",
-    "NEXT-GENERATION TECHNOLOGY",
-    "SECURE BY DEFAULT",
+    'ENHANCED PRODUCTIVITY',
+    'BEAUTIFUL DESIGN',
+    'NEXT-GENERATION TECHNOLOGY',
+    'SECURE BY DEFAULT',
   ],
   contact: [
-    "JOIN OUR COMMUNITY",
-    "GET IN TOUCH WITH US",
-    "STAY UPDATED",
-    "BE PART OF THE FUTURE",
-  ]
+    'JOIN OUR COMMUNITY',
+    'GET IN TOUCH WITH US',
+    'STAY UPDATED',
+    'BE PART OF THE FUTURE',
+  ],
 }
 
-export default function InfiniteCarousel({ section = 'hero' }: InfiniteCarouselProps) {
+export default function InfiniteCarousel({
+  section = 'hero',
+}: InfiniteCarouselProps) {
   const testimonials = sectionTexts[section] || sectionTexts.hero
 
   return (
@@ -41,7 +43,7 @@ export default function InfiniteCarousel({ section = 'hero' }: InfiniteCarouselP
           transition={{
             duration: 30,
             repeat: Infinity,
-            ease: "linear",
+            ease: 'linear',
           }}
         >
           {[...testimonials, ...testimonials].map((text, i) => (
@@ -58,4 +60,3 @@ export default function InfiniteCarousel({ section = 'hero' }: InfiniteCarouselP
     </div>
   )
 }
-

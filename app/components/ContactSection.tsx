@@ -5,6 +5,7 @@ import { Mail, MessageSquare, Send, Github, Linkedin } from 'lucide-react'
 import { useState } from 'react'
 import { toast } from 'react-toastify'
 import InfiniteCarousel from './InfiniteCarousel'
+import Slider from 'react-slick' // Import Slick Slider
 
 interface TeamMember {
   name: string
@@ -117,6 +118,34 @@ const blogPosts = [
     link: 'https://medium.com/javascript-in-plain-english/react-performance-optimization-techniques-c14a28af0b58',
     date: 'Mar 10, 2024',
   },
+  {
+    title: 'React Performance Optimization',
+    excerpt:
+      'Deep dive into advanced techniques for optimizing React applications.',
+    link: 'https://medium.com/javascript-in-plain-english/react-performance-optimization-techniques-c14a28af0b58',
+    date: 'Mar 10, 2024',
+  },
+  {
+    title: 'React Performance Optimization',
+    excerpt:
+      'Deep dive into advanced techniques for optimizing React applications.',
+    link: 'https://medium.com/javascript-in-plain-english/react-performance-optimization-techniques-c14a28af0b58',
+    date: 'Mar 10, 2024',
+  },
+  {
+    title: 'React Performance Optimization',
+    excerpt:
+      'Deep dive into advanced techniques for optimizing React applications.',
+    link: 'https://medium.com/javascript-in-plain-english/react-performance-optimization-techniques-c14a28af0b58',
+    date: 'Mar 10, 2024',
+  },
+  {
+    title: 'React Performance Optimization',
+    excerpt:
+      'Deep dive into advanced techniques for optimizing React applications.',
+    link: 'https://medium.com/javascript-in-plain-english/react-performance-optimization-techniques-c14a28af0b58',
+    date: 'Mar 10, 2024',
+  },
 ]
 
 export default function ContactSection() {
@@ -146,18 +175,57 @@ export default function ContactSection() {
   const ceo = team[0]
   const developers = team.slice(1)
 
+  // Define the slider settings
+  const sliderSettings = {
+    infinite: true, // Infinite loop of cards
+    speed: 4000, // Speed of the slide transition (1 second)
+    slidesToShow: 1, // Show one card at a time
+    slidesToScroll: 1, // Scroll one card at a time
+    autoplay: true, // Enable autoplay
+    autoplaySpeed: 0, // Continuous loop with no delay (0 for no pause)
+    cssEase: 'linear', // Smooth continuous scrolling
+    pauseOnHover: true, // Pause carousel on hover
+    centerMode: true, // Center the active card
+    centerPadding: '20px', // Add padding around the center card for gap
+    focusOnSelect: true, // Focus on selected card
+    arrows: false, // Disable left and right navigation buttons
+    responsive: [
+      {
+        breakpoint: 768, // For small screen, show 1 card
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 1024, // For medium screen, show 2 cards
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 1440, // For large screen, show 3 cards
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  }
+
   return (
     <>
-      <section id="team" className="relative">
+      <section id="team" className="relative h-screen">
         <div className="absolute inset-0 bg-gradient-to-b from-zinc-900/0 via-zinc-900/50 to-zinc-900/0" />
-        <div className="container relative min-h-screen flex items-center py-20">
+        <div className="container relative flex items-center py-8 md:py-18">
           <div className="w-full">
-            <div className="text-center mb-16">
+            <div className="text-center mb-4 md:mb-16">
               <motion.h2
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400"
+                className=" text-2xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400"
               >
                 Meet Our Team
               </motion.h2>
@@ -165,7 +233,7 @@ export default function ContactSection() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="mt-4 text-xl text-gray-400"
+                className="md:mt-4 text-lg text-gray-400"
               >
                 The innovators behind the revolution
               </motion.p>
@@ -176,27 +244,27 @@ export default function ContactSection() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="max-w-2xl mx-auto mb-20"
+              className="max-w-2xl mx-auto mb-3 md:mb-20"
             >
               <div
-                className="group relative p-8 rounded-2xl bg-zinc-900/50 border border-zinc-800/50 
+                className="group relative p-3 md:p-8 rounded-2xl bg-zinc-900/50 border border-zinc-800/50 
                 backdrop-blur-sm hover:bg-zinc-800/50 transition-colors text-center"
               >
                 <div className="flex flex-col items-center">
                   <div
-                    className="relative w-32 h-32 rounded-full overflow-hidden bg-zinc-800/50 p-6 mb-6
+                    className="relative w-20 h-20 md:w-32 md:h-32 rounded-full overflow-hidden bg-zinc-800/50 p-3 md:p-6 mb-3 md:mb-6
                     ring-4 ring-blue-500/20 group-hover:ring-blue-500/30 transition-all"
                   >
                     <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-600/20" />
                     {ceo.image}
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">
+                    <h3 className="text-lg md:text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">
                       {ceo.name}
                     </h3>
                     <p className="text-purple-400 text-lg mb-4">{ceo.role}</p>
                     <p className="text-gray-400 max-w-lg mx-auto">{ceo.bio}</p>
-                    <div className="mt-6 flex justify-center space-x-4">
+                    <div className="mt-2 md:mt-6 flex justify-center space-x-4">
                       {ceo.social.github && (
                         <a
                           href={ceo.social.github}
@@ -223,16 +291,15 @@ export default function ContactSection() {
               </div>
             </motion.div>
 
-            {/* Developers Section */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            {/* Developer Carousel Section */}
+            <Slider {...sliderSettings}>
               {developers.map((member, index) => (
                 <motion.div
                   key={member.name}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="group relative p-6 rounded-2xl bg-zinc-900/50 border border-zinc-800/50 
-                    backdrop-blur-sm hover:bg-zinc-800/50 transition-colors"
+                  className="group relative p-6 rounded-2xl bg-zinc-900/50 border border-zinc-800/50 backdrop-blur-sm hover:bg-zinc-800/50 transition-all"
                 >
                   <div className="flex items-start space-x-4">
                     <div className="relative w-24 h-24 rounded-xl overflow-hidden bg-zinc-800/50 p-4">
@@ -243,8 +310,12 @@ export default function ContactSection() {
                       <h3 className="text-xl font-semibold text-white group-hover:text-blue-400 transition-colors">
                         {member.name}
                       </h3>
-                      <p className="text-purple-400 mb-2">{member.role}</p>
-                      <p className="text-gray-400 text-sm">{member.bio}</p>
+                      <p className="text-purple-400 mb-2 line-clamp-1">
+                        {member.role}
+                      </p>
+                      <p className="text-gray-400 text-sm line-clamp-2">
+                        {member.bio}
+                      </p>
                       <div className="mt-3 flex space-x-3">
                         {member.social.github && (
                           <a
@@ -271,58 +342,50 @@ export default function ContactSection() {
                   </div>
                 </motion.div>
               ))}
-            </div>
-
-            {/* Blog Section - Now horizontal below developers */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="rounded-2xl border border-zinc-800/50 overflow-hidden backdrop-blur-sm mb-20"
-            >
-              <div className="p-6 bg-zinc-900/50 border-b border-zinc-800/50 text-center">
-                <h3 className="text-xl font-semibold text-white">
-                  Latest Insights
-                </h3>
-                <p className="text-gray-400 mt-1">
-                  Technical articles from our team
-                </p>
-              </div>
-              <div className="bg-zinc-900/30 p-6">
-                <div className="flex flex-wrap justify-center gap-6 max-w-5xl mx-auto">
-                  {blogPosts.map((post, index) => (
-                    <motion.a
-                      key={post.title}
-                      href={post.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                      className="block group w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
-                    >
-                      <div
-                        className="rounded-lg p-4 bg-zinc-800/30 hover:bg-zinc-800/50 border border-zinc-700/30 
-                        hover:border-zinc-700/50 transition-all duration-300 h-full"
-                      >
-                        <h4 className="text-white group-hover:text-blue-400 font-medium transition-colors">
-                          {post.title}
-                        </h4>
-                        <p className="text-sm text-gray-400 mt-2">
-                          {post.excerpt}
-                        </p>
-                        <p className="text-xs text-gray-500 mt-3">
-                          {post.date}
-                        </p>
-                      </div>
-                    </motion.a>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
+            </Slider>
           </div>
         </div>
         <InfiniteCarousel section="contact" />
+      </section>
+      {/* Blog Posts */}
+      <section className="relative min-h-screen p-6 md:p-12 lg:p-16 w-full">
+        <div className="bg-zinc-900/30 p-6 md:p-8 lg:p-12 rounded-xl shadow-lg w-full">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
+              Recent Blog Posts
+            </h2>
+          </div>
+          <div className="flex flex-wrap justify-center gap-8 md:gap-12 lg:gap-16 w-full">
+            {blogPosts.map((post, index) => (
+              <motion.a
+                key={post.title}
+                href={post.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="block group w-full md:w-[calc(50%-16px)] lg:w-[calc(33.333%-24px)]"
+              >
+                <div
+                  className="rounded-lg p-6 bg-zinc-800/30 hover:bg-zinc-800/50 border border-zinc-700/30 
+            hover:border-zinc-700/50 transition-all duration-300 h-full shadow-lg"
+                >
+                  <h4 className="text-xl md:text-2xl font-semibold text-white group-hover:text-blue-400 transition-colors">
+                    {post.title}
+                  </h4>
+                  <p className="text-sm text-gray-400 mt-3">{post.excerpt}</p>
+                  <p className="text-xs text-gray-500 mt-3">{post.date}</p>
+                </div>
+              </motion.a>
+            ))}
+          </div>
+        </div>
+
+        {/* Carousel taking full width */}
+        <div className="absolute w-full left-0">
+          <InfiniteCarousel section="contact" />
+        </div>
       </section>
 
       <section id="contact" className="relative bg-zinc-900/50 h-screen">
