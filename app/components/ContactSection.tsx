@@ -325,16 +325,16 @@ export default function ContactSection() {
         <InfiniteCarousel section="contact" />
       </section>
 
-      <section id="contact" className="relative bg-zinc-900/50">
+      <section id="contact" className="relative bg-zinc-900/50 h-screen">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_70%,rgba(59,130,246,0.1),transparent_50%)]" />
-        <div className="container relative min-h-screen flex items-center py-20">
+        <div className="container relative min-h-screen flex items-center py-6 md:py-20">
           <div className="w-full">
-            <div className="text-center mb-16">
+            <div className="text-center mb-3 md:mb-16">
               <motion.h2
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400"
+                className="text-2xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400"
               >
                 Get in Touch
               </motion.h2>
@@ -342,7 +342,7 @@ export default function ContactSection() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="mt-4 text-xl text-gray-400"
+                className=" mt-2 md:mt-4 text-md md:text-xl text-gray-400"
               >
                 Have questions? We'd love to hear from you.
               </motion.p>
@@ -355,7 +355,7 @@ export default function ContactSection() {
                 transition={{ duration: 0.5 }}
                 className="rounded-2xl border border-zinc-800/50 overflow-hidden backdrop-blur-sm"
               >
-                <div className="p-6 bg-zinc-900/50 border-b border-zinc-800/50">
+                <div className="p-4 md:p-6 bg-zinc-900/50 border-b border-zinc-800/50">
                   <h3 className="text-xl font-semibold text-white flex items-center">
                     <MessageSquare className="w-5 h-5 mr-2 text-blue-400" />
                     Get in Touch
@@ -387,8 +387,8 @@ export default function ContactSection() {
                         }))
                       }
                       className="w-full px-4 py-2 rounded-lg bg-zinc-800/50 border border-zinc-700/50 
-                        text-white placeholder-gray-400 focus:outline-none focus:border-blue-500/50 
-                        focus:ring-1 focus:ring-blue-500/50 transition-colors"
+                  text-white placeholder-gray-400 focus:outline-none focus:border-blue-500/50 
+                  focus:ring-1 focus:ring-blue-500/50 transition-colors"
                       placeholder="Your name"
                       required
                     />
@@ -412,8 +412,8 @@ export default function ContactSection() {
                         }))
                       }
                       className="w-full px-4 py-2 rounded-lg bg-zinc-800/50 border border-zinc-700/50 
-                        text-white placeholder-gray-400 focus:outline-none focus:border-blue-500/50 
-                        focus:ring-1 focus:ring-blue-500/50 transition-colors"
+                  text-white placeholder-gray-400 focus:outline-none focus:border-blue-500/50 
+                  focus:ring-1 focus:ring-blue-500/50 transition-colors"
                       placeholder="your@email.com"
                       required
                     />
@@ -437,8 +437,8 @@ export default function ContactSection() {
                       }
                       rows={4}
                       className="w-full px-4 py-2 rounded-lg bg-zinc-800/50 border border-zinc-700/50 
-                        text-white placeholder-gray-400 focus:outline-none focus:border-blue-500/50 
-                        focus:ring-1 focus:ring-blue-500/50 transition-colors resize-none"
+                  text-white placeholder-gray-400 focus:outline-none focus:border-blue-500/50 
+                  focus:ring-1 focus:ring-blue-500/50 transition-colors resize-none"
                       placeholder="Your message..."
                       required
                     />
@@ -448,10 +448,10 @@ export default function ContactSection() {
                     type="submit"
                     disabled={isSubmitting}
                     className="w-full px-6 py-3 rounded-lg bg-gradient-to-r from-blue-500 to-purple-600 
-                      text-white font-semibold hover:from-blue-600 hover:to-purple-700
-                      focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:ring-offset-2 
-                      focus:ring-offset-zinc-900 disabled:opacity-50 disabled:cursor-not-allowed
-                      transition-all duration-300 flex items-center justify-center space-x-2"
+                text-white font-semibold hover:from-blue-600 hover:to-purple-700
+                focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:ring-offset-2 
+                focus:ring-offset-zinc-900 disabled:opacity-50 disabled:cursor-not-allowed
+                transition-all duration-300 flex items-center justify-center space-x-2"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
