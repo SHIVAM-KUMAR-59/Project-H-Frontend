@@ -19,10 +19,15 @@ interface TeamMember {
 
 const team: TeamMember[] = [
   {
-    name: "John Doe",
-    role: "CEO & Founder",
+    name: 'John Doe',
+    role: 'CEO & Founder',
     image: (
-      <svg className="w-full h-full text-blue-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <svg
+        className="w-full h-full text-blue-400"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+      >
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -32,17 +37,22 @@ const team: TeamMember[] = [
         <circle cx="12" cy="7" r="3" fill="currentColor" opacity="0.2" />
       </svg>
     ),
-    bio: "Visionary leader with 10+ years in mobile technology, passionate about creating revolutionary user experiences.",
+    bio: 'Visionary leader with 10+ years in mobile technology, passionate about creating revolutionary user experiences.',
     social: {
-      github: "https://github.com/johndoe",
-      linkedin: "https://linkedin.com/in/johndoe"
-    }
+      github: 'https://github.com/johndoe',
+      linkedin: 'https://linkedin.com/in/johndoe',
+    },
   },
   {
-    name: "Jane Smith",
-    role: "Lead Developer",
+    name: 'Jane Smith',
+    role: 'Lead Developer',
     image: (
-      <svg className="w-full h-full text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <svg
+        className="w-full h-full text-purple-400"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+      >
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -58,17 +68,22 @@ const team: TeamMember[] = [
         <circle cx="12" cy="11" r="3" fill="currentColor" opacity="0.2" />
       </svg>
     ),
-    bio: "Full-stack wizard specializing in React and Node.js, building scalable solutions for tomorrow.",
+    bio: 'Full-stack wizard specializing in React and Node.js, building scalable solutions for tomorrow.',
     social: {
-      github: "https://github.com/janesmith",
-      linkedin: "https://linkedin.com/in/janesmith"
-    }
+      github: 'https://github.com/janesmith',
+      linkedin: 'https://linkedin.com/in/janesmith',
+    },
   },
   {
-    name: "Alex Johnson",
-    role: "Backend Developer",
+    name: 'Alex Johnson',
+    role: 'Backend Developer',
     image: (
-      <svg className="w-full h-full text-green-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <svg
+        className="w-full h-full text-green-400"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+      >
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -78,35 +93,37 @@ const team: TeamMember[] = [
         <circle cx="12" cy="8" r="3" fill="currentColor" opacity="0.2" />
       </svg>
     ),
-    bio: "Database expert and system architect with a passion for building robust and scalable backend solutions.",
+    bio: 'Database expert and system architect with a passion for building robust and scalable backend solutions.',
     social: {
-      github: "https://github.com/alexj",
-      linkedin: "https://linkedin.com/in/alexjohnson"
-    }
-  }
+      github: 'https://github.com/alexj',
+      linkedin: 'https://linkedin.com/in/alexjohnson',
+    },
+  },
 ]
 
 // Add new blog data
 const blogPosts = [
   {
-    title: "Building Scalable Backend Systems",
-    excerpt: "Learn about modern architecture patterns and best practices for building robust backend systems.",
-    link: "https://medium.com/better-programming/building-scalable-backend-systems-4c872b31d67b",
-    date: "Mar 15, 2024"
+    title: 'Building Scalable Backend Systems',
+    excerpt:
+      'Learn about modern architecture patterns and best practices for building robust backend systems.',
+    link: 'https://medium.com/better-programming/building-scalable-backend-systems-4c872b31d67b',
+    date: 'Mar 15, 2024',
   },
   {
-    title: "React Performance Optimization",
-    excerpt: "Deep dive into advanced techniques for optimizing React applications.",
-    link: "https://medium.com/javascript-in-plain-english/react-performance-optimization-techniques-c14a28af0b58",
-    date: "Mar 10, 2024"
-  }
+    title: 'React Performance Optimization',
+    excerpt:
+      'Deep dive into advanced techniques for optimizing React applications.',
+    link: 'https://medium.com/javascript-in-plain-english/react-performance-optimization-techniques-c14a28af0b58',
+    date: 'Mar 10, 2024',
+  },
 ]
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    message: ''
+    message: '',
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
 
@@ -116,7 +133,7 @@ export default function ContactSection() {
 
     try {
       // Add your form submission logic here
-      await new Promise(resolve => setTimeout(resolve, 1000)) // Simulated API call
+      await new Promise((resolve) => setTimeout(resolve, 1000)) // Simulated API call
       toast.success('Message sent successfully!')
       setFormData({ name: '', email: '', message: '' })
     } catch (error) {
@@ -136,7 +153,7 @@ export default function ContactSection() {
         <div className="container relative min-h-screen flex items-center py-20">
           <div className="w-full">
             <div className="text-center mb-16">
-              <motion.h2 
+              <motion.h2
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
@@ -144,7 +161,7 @@ export default function ContactSection() {
               >
                 Meet Our Team
               </motion.h2>
-              <motion.p 
+              <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
@@ -161,11 +178,15 @@ export default function ContactSection() {
               transition={{ duration: 0.5 }}
               className="max-w-2xl mx-auto mb-20"
             >
-              <div className="group relative p-8 rounded-2xl bg-zinc-900/50 border border-zinc-800/50 
-                backdrop-blur-sm hover:bg-zinc-800/50 transition-colors text-center">
+              <div
+                className="group relative p-8 rounded-2xl bg-zinc-900/50 border border-zinc-800/50 
+                backdrop-blur-sm hover:bg-zinc-800/50 transition-colors text-center"
+              >
                 <div className="flex flex-col items-center">
-                  <div className="relative w-32 h-32 rounded-full overflow-hidden bg-zinc-800/50 p-6 mb-6
-                    ring-4 ring-blue-500/20 group-hover:ring-blue-500/30 transition-all">
+                  <div
+                    className="relative w-32 h-32 rounded-full overflow-hidden bg-zinc-800/50 p-6 mb-6
+                    ring-4 ring-blue-500/20 group-hover:ring-blue-500/30 transition-all"
+                  >
                     <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-600/20" />
                     {ceo.image}
                   </div>
@@ -177,14 +198,22 @@ export default function ContactSection() {
                     <p className="text-gray-400 max-w-lg mx-auto">{ceo.bio}</p>
                     <div className="mt-6 flex justify-center space-x-4">
                       {ceo.social.github && (
-                        <a href={ceo.social.github} target="_blank" rel="noopener noreferrer"
-                          className="text-gray-400 hover:text-blue-400 transition-colors">
+                        <a
+                          href={ceo.social.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-gray-400 hover:text-blue-400 transition-colors"
+                        >
                           <Github className="w-6 h-6" />
                         </a>
                       )}
                       {ceo.social.linkedin && (
-                        <a href={ceo.social.linkedin} target="_blank" rel="noopener noreferrer"
-                          className="text-gray-400 hover:text-blue-400 transition-colors">
+                        <a
+                          href={ceo.social.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-gray-400 hover:text-blue-400 transition-colors"
+                        >
                           <Linkedin className="w-6 h-6" />
                         </a>
                       )}
@@ -218,14 +247,22 @@ export default function ContactSection() {
                       <p className="text-gray-400 text-sm">{member.bio}</p>
                       <div className="mt-3 flex space-x-3">
                         {member.social.github && (
-                          <a href={member.social.github} target="_blank" rel="noopener noreferrer"
-                            className="text-gray-400 hover:text-blue-400 transition-colors">
+                          <a
+                            href={member.social.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gray-400 hover:text-blue-400 transition-colors"
+                          >
                             <Github className="w-5 h-5" />
                           </a>
                         )}
                         {member.social.linkedin && (
-                          <a href={member.social.linkedin} target="_blank" rel="noopener noreferrer"
-                            className="text-gray-400 hover:text-blue-400 transition-colors">
+                          <a
+                            href={member.social.linkedin}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gray-400 hover:text-blue-400 transition-colors"
+                          >
                             <Linkedin className="w-5 h-5" />
                           </a>
                         )}
@@ -244,8 +281,12 @@ export default function ContactSection() {
               className="rounded-2xl border border-zinc-800/50 overflow-hidden backdrop-blur-sm mb-20"
             >
               <div className="p-6 bg-zinc-900/50 border-b border-zinc-800/50 text-center">
-                <h3 className="text-xl font-semibold text-white">Latest Insights</h3>
-                <p className="text-gray-400 mt-1">Technical articles from our team</p>
+                <h3 className="text-xl font-semibold text-white">
+                  Latest Insights
+                </h3>
+                <p className="text-gray-400 mt-1">
+                  Technical articles from our team
+                </p>
               </div>
               <div className="bg-zinc-900/30 p-6">
                 <div className="flex flex-wrap justify-center gap-6 max-w-5xl mx-auto">
@@ -260,14 +301,19 @@ export default function ContactSection() {
                       transition={{ duration: 0.5, delay: index * 0.1 }}
                       className="block group w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
                     >
-                      <div className="rounded-lg p-4 bg-zinc-800/30 hover:bg-zinc-800/50 border border-zinc-700/30 
+                      <div
+                        className="rounded-lg p-4 bg-zinc-800/30 hover:bg-zinc-800/50 border border-zinc-700/30 
                         hover:border-zinc-700/50 transition-all duration-300 h-full"
                       >
                         <h4 className="text-white group-hover:text-blue-400 font-medium transition-colors">
                           {post.title}
                         </h4>
-                        <p className="text-sm text-gray-400 mt-2">{post.excerpt}</p>
-                        <p className="text-xs text-gray-500 mt-3">{post.date}</p>
+                        <p className="text-sm text-gray-400 mt-2">
+                          {post.excerpt}
+                        </p>
+                        <p className="text-xs text-gray-500 mt-3">
+                          {post.date}
+                        </p>
                       </div>
                     </motion.a>
                   ))}
@@ -284,7 +330,7 @@ export default function ContactSection() {
         <div className="container relative min-h-screen flex items-center py-20">
           <div className="w-full">
             <div className="text-center mb-16">
-              <motion.h2 
+              <motion.h2
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
@@ -292,7 +338,7 @@ export default function ContactSection() {
               >
                 Get in Touch
               </motion.h2>
-              <motion.p 
+              <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
@@ -314,19 +360,32 @@ export default function ContactSection() {
                     <MessageSquare className="w-5 h-5 mr-2 text-blue-400" />
                     Get in Touch
                   </h3>
-                  <p className="text-gray-400 mt-1">Have questions? We'd love to hear from you.</p>
+                  <p className="text-gray-400 mt-1">
+                    Have questions? We'd love to hear from you.
+                  </p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="p-6 bg-zinc-900/30 space-y-4">
+                <form
+                  onSubmit={handleSubmit}
+                  className="p-6 bg-zinc-900/30 space-y-4"
+                >
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-medium text-gray-300 mb-1"
+                    >
                       Name
                     </label>
                     <input
                       type="text"
                       id="name"
                       value={formData.name}
-                      onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+                      onChange={(e) =>
+                        setFormData((prev) => ({
+                          ...prev,
+                          name: e.target.value,
+                        }))
+                      }
                       className="w-full px-4 py-2 rounded-lg bg-zinc-800/50 border border-zinc-700/50 
                         text-white placeholder-gray-400 focus:outline-none focus:border-blue-500/50 
                         focus:ring-1 focus:ring-blue-500/50 transition-colors"
@@ -334,16 +393,24 @@ export default function ContactSection() {
                       required
                     />
                   </div>
-                  
+
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium text-gray-300 mb-1"
+                    >
                       Email
                     </label>
                     <input
                       type="email"
                       id="email"
                       value={formData.email}
-                      onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+                      onChange={(e) =>
+                        setFormData((prev) => ({
+                          ...prev,
+                          email: e.target.value,
+                        }))
+                      }
                       className="w-full px-4 py-2 rounded-lg bg-zinc-800/50 border border-zinc-700/50 
                         text-white placeholder-gray-400 focus:outline-none focus:border-blue-500/50 
                         focus:ring-1 focus:ring-blue-500/50 transition-colors"
@@ -353,13 +420,21 @@ export default function ContactSection() {
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-1">
+                    <label
+                      htmlFor="message"
+                      className="block text-sm font-medium text-gray-300 mb-1"
+                    >
                       Message
                     </label>
                     <textarea
                       id="message"
                       value={formData.message}
-                      onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))}
+                      onChange={(e) =>
+                        setFormData((prev) => ({
+                          ...prev,
+                          message: e.target.value,
+                        }))
+                      }
                       rows={4}
                       className="w-full px-4 py-2 rounded-lg bg-zinc-800/50 border border-zinc-700/50 
                         text-white placeholder-gray-400 focus:outline-none focus:border-blue-500/50 
@@ -392,4 +467,4 @@ export default function ContactSection() {
       </section>
     </>
   )
-} 
+}

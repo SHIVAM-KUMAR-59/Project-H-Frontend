@@ -7,7 +7,7 @@ export default function PhoneAnimation() {
   const [isHovered, setIsHovered] = useState(false)
 
   return (
-    <div className="relative w-[300px] h-[600px] pt-10">
+    <div className="relative w-[200px] sm:w-[300px] h-[400px] sm:h-[600px] pt-10">
       <motion.div
         className="absolute inset-0"
         animate={{
@@ -16,7 +16,7 @@ export default function PhoneAnimation() {
         transition={{
           duration: 4,
           repeat: Infinity,
-          ease: "easeInOut",
+          ease: 'easeInOut',
         }}
         onHoverStart={() => setIsHovered(true)}
         onHoverEnd={() => setIsHovered(false)}
@@ -54,7 +54,7 @@ export default function PhoneAnimation() {
               transition={{
                 duration: 5,
                 repeat: Infinity,
-                repeatType: "reverse",
+                repeatType: 'reverse',
               }}
             />
             <motion.div
@@ -66,24 +66,28 @@ export default function PhoneAnimation() {
               transition={{
                 duration: 2,
                 repeat: Infinity,
-                repeatType: "reverse",
+                repeatType: 'reverse',
               }}
             />
             {/* App content placeholder */}
             <div className="absolute inset-0 flex flex-col items-center justify-center p-8">
-              <motion.div 
+              <motion.div
                 className="w-24 h-24 bg-white/20 rounded-full"
-                animate={{ 
+                animate={{
                   scale: [1, 1.2, 1],
-                  opacity: [0.8, 0.8, 0.6]
+                  opacity: [0.8, 0.8, 0.6],
                 }}
-                transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  repeatType: 'reverse',
+                }}
               />
-              <motion.div 
+              <motion.div
                 className="w-32 h-32 bg-white/10 rounded-2xl mt-4"
-                animate={{ 
+                animate={{
                   scale: [1, 1.5, 1],
-                  opacity: [0.5, 0.5, 0.5]
+                  opacity: [0.5, 0.5, 0.5],
                 }}
                 transition={{ duration: 2, repeat: Infinity }}
               />
@@ -100,7 +104,7 @@ export default function PhoneAnimation() {
             transition={{
               duration: 3,
               repeat: Infinity,
-              repeatType: "reverse",
+              repeatType: 'reverse',
             }}
           />
 
@@ -114,4 +118,3 @@ export default function PhoneAnimation() {
     </div>
   )
 }
-
