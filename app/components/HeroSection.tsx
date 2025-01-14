@@ -11,7 +11,7 @@ export default function HeroSection() {
 
   return (
     <section id="home" className="relative">
-      <div className="container relative min-h-screen flex items-center py-20 mt-16">
+      <div className="container relative lg:max-h-screen flex items-center py-20 mt-16">
         <div className="w-full flex flex-col-reverse md:flex-row items-center justify-between gap-8">
           <div className="flex-1 space-y-6 text-center md:text-left">
             <h1 className="text-4xl md:text-6xl font-bold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500 [text-shadow:_0_1px_20px_rgb(59_130_246_/_30%)] drop-shadow-sm">

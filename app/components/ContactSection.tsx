@@ -100,6 +100,81 @@ const team: TeamMember[] = [
       linkedin: 'https://linkedin.com/in/alexjohnson',
     },
   },
+  {
+    name: 'Alex Johnson',
+    role: 'Backend Developer',
+    image: (
+      <svg
+        className="w-full h-full text-green-400"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.5}
+          d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"
+        />
+        <circle cx="12" cy="8" r="3" fill="currentColor" opacity="0.2" />
+      </svg>
+    ),
+    bio: 'Database expert and system architect with a passion for building robust and scalable backend solutions.',
+    social: {
+      github: 'https://github.com/alexj',
+      linkedin: 'https://linkedin.com/in/alexjohnson',
+    },
+  },
+  {
+    name: 'Alex Johnson',
+    role: 'Backend Developer',
+    image: (
+      <svg
+        className="w-full h-full text-green-400"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.5}
+          d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"
+        />
+        <circle cx="12" cy="8" r="3" fill="currentColor" opacity="0.2" />
+      </svg>
+    ),
+    bio: 'Database expert and system architect with a passion for building robust and scalable backend solutions.',
+    social: {
+      github: 'https://github.com/alexj',
+      linkedin: 'https://linkedin.com/in/alexjohnson',
+    },
+  },
+  {
+    name: 'Alex Johnson',
+    role: 'Backend Developer',
+    image: (
+      <svg
+        className="w-full h-full text-green-400"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.5}
+          d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"
+        />
+        <circle cx="12" cy="8" r="3" fill="currentColor" opacity="0.2" />
+      </svg>
+    ),
+    bio: 'Database expert and system architect with a passion for building robust and scalable backend solutions.',
+    social: {
+      github: 'https://github.com/alexj',
+      linkedin: 'https://linkedin.com/in/alexjohnson',
+    },
+  },
 ]
 
 // Add new blog data
@@ -178,7 +253,7 @@ export default function ContactSection() {
   // Define the slider settings
   const sliderSettings = {
     infinite: true, // Infinite loop of cards
-    speed: 4000, // Speed of the slide transition (1 second)
+    speed: 7000, // Speed of the slide transition (7 second)
     slidesToShow: 1, // Show one card at a time
     slidesToScroll: 1, // Scroll one card at a time
     autoplay: true, // Enable autoplay
@@ -216,7 +291,7 @@ export default function ContactSection() {
 
   return (
     <>
-      <section id="team" className="relative h-screen">
+      <section id="team" className="relative lg:max-h-screen ">
         <div className="absolute inset-0 bg-gradient-to-b from-zinc-900/0 via-zinc-900/50 to-zinc-900/0" />
         <div className="container relative flex items-center py-8 md:py-18">
           <div className="w-full">
@@ -348,14 +423,14 @@ export default function ContactSection() {
         <InfiniteCarousel section="contact" />
       </section>
       {/* Blog Posts */}
-      <section className="relative min-h-screen p-6 md:p-12 lg:p-16 w-full">
+      <section className="relative lg:max-h-fit p-6 md:p-12 lg:p-16 w-full ">
         <div className="bg-zinc-900/30 p-6 md:p-8 lg:p-12 rounded-xl shadow-lg w-full">
           <div className="text-center mb-8">
             <h2 className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
               Recent Blog Posts
             </h2>
           </div>
-          <div className="flex flex-wrap justify-center gap-8 md:gap-12 lg:gap-16 w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 w-full ">
             {blogPosts.map((post, index) => (
               <motion.a
                 key={post.title}
@@ -365,11 +440,11 @@ export default function ContactSection() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="block group w-full md:w-[calc(50%-16px)] lg:w-[calc(33.333%-24px)]"
+                className="block group w-full"
               >
                 <div
                   className="rounded-lg p-6 bg-zinc-800/30 hover:bg-zinc-800/50 border border-zinc-700/30 
-            hover:border-zinc-700/50 transition-all duration-300 h-full shadow-lg"
+        hover:border-zinc-700/50 transition-all duration-300 h-full shadow-lg"
                 >
                   <h4 className="text-xl md:text-2xl font-semibold text-white group-hover:text-blue-400 transition-colors">
                     {post.title}
@@ -388,16 +463,16 @@ export default function ContactSection() {
         </div>
       </section>
 
-      <section id="contact" className="relative bg-zinc-900/50 h-screen">
+      <section id="contact" className="relative bg-zinc-900/50 max-h-screen ">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_70%,rgba(59,130,246,0.1),transparent_50%)]" />
-        <div className="container relative min-h-screen flex items-center py-6 md:py-20">
+        <div className="container relative lg:max-h-screen flex items-center py-6 lg:py-20">
           <div className="w-full">
-            <div className="text-center mb-3 md:mb-16">
+            <div className="text-center mb-3 lg:mb-16">
               <motion.h2
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="text-2xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400"
+                className="text-2xl lg:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400"
               >
                 Get in Touch
               </motion.h2>
@@ -405,7 +480,7 @@ export default function ContactSection() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className=" mt-2 md:mt-4 text-md md:text-xl text-gray-400"
+                className=" mt-2 lg:mt-4 text-md md:text-xl text-gray-400"
               >
                 Have questions? We'd love to hear from you.
               </motion.p>
@@ -418,7 +493,7 @@ export default function ContactSection() {
                 transition={{ duration: 0.5 }}
                 className="rounded-2xl border border-zinc-800/50 overflow-hidden backdrop-blur-sm"
               >
-                <div className="p-4 md:p-6 bg-zinc-900/50 border-b border-zinc-800/50">
+                <div className="p-4 lg:p-6 bg-zinc-900/50 border-b border-zinc-800/50">
                   <h3 className="text-xl font-semibold text-white flex items-center">
                     <MessageSquare className="w-5 h-5 mr-2 text-blue-400" />
                     Get in Touch

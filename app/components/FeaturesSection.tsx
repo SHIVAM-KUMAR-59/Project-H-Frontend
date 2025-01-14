@@ -78,7 +78,7 @@ export default function FeaturesSection() {
   return (
     <section id="features" className="relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-zinc-900/0 via-zinc-900/50 to-zinc-900/0" />
-      <div className="container relative min-h-screen flex items-center py-10 sm:py-16 lg:py-20">
+      <div className="container relative lg:max-h-screen flex items-center py-10 sm:py-16 lg:py-20">
         <div className="w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
             {/* Left side - Features */}
