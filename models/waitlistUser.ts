@@ -13,7 +13,7 @@ const WaitlistUserSchema = new mongoose.Schema(
     },
     // To Store the messages
     message: {
-      type: String,
+      type: mongoose.Schema.ObjectId,
       default: null,
     },
   },
