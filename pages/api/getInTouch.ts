@@ -7,14 +7,24 @@ const handler = async (
   res: NextApiResponse,
 ): Promise<void> => {
   await connectDB()
-  console.log('Hit')
-  const { name, email, text } = req.body
 
-  console.log(name, email, text)
+  // ✅ Fix: Change `text` to `message`
+  const { name, email, message } = req.body
 
-  if (!name || !email || !text) {
-    return res.status(400).json({ message: 'Please fill in all fields' })
+  console.log(name, email, message)
+
+  // ✅ Fix: Ensure `message` is a string
+  if (
+    !name ||
+    !email ||
+    typeof message !== 'string' ||
+    message.trim().length === 0
+  ) {
+    return res
+      .status(400)
+      .json({ message: 'Please fill in all fields correctly' })
   }
+
   try {
     // Check if the user exists
     let user = await waitlistUser.findOne({ email })
@@ -24,16 +34,20 @@ const handler = async (
       user = new waitlistUser({ name, email })
     }
 
+    console.log('User found', user)
+
     // Check if the user has already sent a message
-    if (user.message?.length > 0) {
-      return res.status(400).json({
-        message: 'Sorry you have already sent a message',
-      })
+    if (user.message !== null) {
+      return res
+        .status(400)
+        .json({ message: 'Sorry, you have already sent a message' })
     }
 
-    // Save the new message
-    user.message = text
+    // ✅ Fix: Save the new message
+    user.message = message
+    console.log(user)
     await user.save()
+
     return res.status(201).json({ message: 'Message sent successfully' })
   } catch (error: unknown) {
     console.error('Error:', error)

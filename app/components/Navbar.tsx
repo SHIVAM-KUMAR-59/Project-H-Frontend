@@ -30,7 +30,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2">
           <Smartphone className="h-6 w-6 text-white" />
-          <span className="font-bold text-white">AppName</span>
+          <span className="font-bold text-white">SkillArc</span>
         </Link>
 
         {/* Hamburger Menu Icon */}
@@ -76,15 +76,15 @@ export default function Navbar() {
             Features
           </a>
           <a
-            href="#team"
+            href="#blog"
             onClick={(e) => {
               e.preventDefault()
-              scrollToSection('#team')
+              scrollToSection('#blog')
               setIsMenuOpen(false) // Close menu on link click
             }}
             className="text-white hover:text-white/90 transition-colors block py-2 md:py-0"
           >
-            Team
+            Blogs
           </a>
           <a
             href="#contact"

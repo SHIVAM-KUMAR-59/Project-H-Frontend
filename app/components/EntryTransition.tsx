@@ -27,49 +27,48 @@ export default function EntryTransition() {
         <motion.div
           className="fixed inset-0 z-[100] flex items-center justify-center bg-zinc-950 transform-gpu pointer-events-none"
           initial={{ opacity: 1 }}
-          animate={isLoading ? 
-            { opacity: 1, scale: 1 } : 
-            { opacity: 0, scale: 3 }
+          animate={
+            isLoading ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 3 }
           }
           exit={{ opacity: 0 }}
-          transition={{ 
+          transition={{
             duration: 0.9,
             ease: [0.22, 1, 0.36, 1],
             scale: {
               duration: 0.9,
-              ease: [0.22, 1, 0.36, 1]
+              ease: [0.22, 1, 0.36, 1],
             },
             opacity: {
               duration: 0.8,
-              ease: 'linear'
-            }
+              ease: 'linear',
+            },
           }}
           style={{
             willChange: 'transform, opacity',
             perspective: '1000px',
-            backfaceVisibility: 'hidden'
+            backfaceVisibility: 'hidden',
           }}
         >
           <motion.div
             initial={{ scale: 1.5, opacity: 0 }}
-            animate={{ 
+            animate={{
               scale: 1,
-              opacity: 1
+              opacity: 1,
             }}
-            transition={{ 
+            transition={{
               duration: 0.6,
               ease: [0.34, 1.56, 0.64, 1],
-              opacity: { duration: 0.4 }
+              opacity: { duration: 0.4 },
             }}
             className="text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400 transform-gpu"
             style={{
-              willChange: 'transform, opacity'
+              willChange: 'transform, opacity',
             }}
           >
-            AppName
+            SkillArc
           </motion.div>
         </motion.div>
       )}
     </AnimatePresence>
   )
-} 
+}

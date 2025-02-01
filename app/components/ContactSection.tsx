@@ -58,7 +58,7 @@ export default function ContactSection() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    text: '',
+    message: '',
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
 
@@ -90,7 +90,7 @@ export default function ContactSection() {
       console.error('Catch Block Error:', error)
       toast.error('Failed to send message. Please try again.')
     } finally {
-      setFormData({ name: '', email: '', text: '' }) // Reset form after success
+      setFormData({ name: '', email: '', message: '' }) // Reset form after success
       setIsSubmitting(false)
     }
   }
@@ -99,7 +99,10 @@ export default function ContactSection() {
     <>
       {/* <TeamSection /> */}
       {/* Blog Posts */}
-      <section className="relative lg:max-h-fit p-6 md:p-12 lg:p-16 w-full ">
+      <section
+        className="relative lg:max-h-fit p-6 md:p-12 lg:p-16 w-full "
+        id="blog"
+      >
         <div className="bg-zinc-900/30 p-6 md:p-8 lg:p-12 rounded-xl shadow-lg w-full">
           <div className="text-center mb-8">
             <h2 className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
@@ -242,11 +245,11 @@ export default function ContactSection() {
                     </label>
                     <textarea
                       id="message"
-                      value={formData.text}
+                      value={formData.message}
                       onChange={(e) =>
                         setFormData((prev) => ({
                           ...prev,
-                          text: e.target.value,
+                          message: e.target.value,
                         }))
                       }
                       rows={4}

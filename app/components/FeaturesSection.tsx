@@ -153,25 +153,31 @@ export default function FeaturesSection() {
                 </div>
 
                 <div className="bg-zinc-900/30 p-4 sm:p-6 h-[250px] sm:h-[300px] overflow-auto scrollbar-hide">
-                  <FlipMove enterAnimation="fade" leaveAnimation="fade">
-                    {auditLogs.map((user, index) => (
-                      <div
-                        key={`${user.name}-${index}`}
-                        className="flex items-center space-x-4 p-3 sm:p-4 mb-2 sm:mb-3 rounded-lg bg-zinc-900/50 border border-zinc-800/50"
-                      >
-                        <div className="relative w-2 h-2">
-                          <div className="absolute inset-0 rounded-full bg-green-400/80" />
-                          <div className="absolute inset-0 rounded-full bg-green-400/40 animate-ping" />
+                  {auditLogs.length > 0 ? (
+                    <FlipMove enterAnimation="fade" leaveAnimation="fade">
+                      {auditLogs.map((user, index) => (
+                        <div
+                          key={`${user.name}-${index}`}
+                          className="flex items-center space-x-4 p-3 sm:p-4 mb-2 sm:mb-3 rounded-lg bg-zinc-900/50 border border-zinc-800/50"
+                        >
+                          <div className="relative w-2 h-2">
+                            <div className="absolute inset-0 rounded-full bg-green-400/80" />
+                            <div className="absolute inset-0 rounded-full bg-green-400/40 animate-ping" />
+                          </div>
+                          <div>
+                            <p className="text-gray-300">{user.name}</p>
+                            <p className="text-xs sm:text-sm text-gray-500">
+                              joined the waitlist
+                            </p>
+                          </div>
                         </div>
-                        <div>
-                          <p className="text-gray-300">{user.name}</p>
-                          <p className="text-xs sm:text-sm text-gray-500">
-                            joined the waitlist
-                          </p>
-                        </div>
-                      </div>
-                    ))}
-                  </FlipMove>
+                      ))}
+                    </FlipMove>
+                  ) : (
+                    <div className="text-gray-300 text-xl md:text-3xl md:text-center">
+                      Be the first one to join
+                    </div>
+                  )}
                 </div>
               </motion.div>
             </div>

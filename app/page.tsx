@@ -27,12 +27,12 @@ const FeaturesSection = dynamic(() => import('./components/FeaturesSection'), {
   ssr: false,
 })
 
-const InfiniteCarousel = dynamic(
-  () => import('./components/InfiniteCarousel'),
-  {
-    ssr: false,
-  },
-)
+// const InfiniteCarousel = dynamic(
+//   () => import('./components/InfiniteCarousel'),
+//   {
+//     ssr: false,
+//   },
+// )
 
 const ContactSection = dynamic(() => import('./components/ContactSection'), {
   ssr: false,
