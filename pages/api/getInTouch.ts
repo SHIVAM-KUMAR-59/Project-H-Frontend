@@ -8,12 +8,8 @@ const handler = async (
 ): Promise<void> => {
   await connectDB()
 
-  // ✅ Fix: Change `text` to `message`
   const { name, email, message } = req.body
 
-  console.log(name, email, message)
-
-  // ✅ Fix: Ensure `message` is a string
   if (
     !name ||
     !email ||
@@ -34,8 +30,6 @@ const handler = async (
       user = new waitlistUser({ name, email, message: null })
     }
 
-    console.log('User found', user)
-
     // Check if the user has already sent a message
     if (user.message !== null) {
       return res
@@ -45,7 +39,7 @@ const handler = async (
 
     // Save the new message
     user.message = message
-    console.log(user)
+
     await user.save()
 
     return res.status(201).json({ message: 'Message sent successfully' })

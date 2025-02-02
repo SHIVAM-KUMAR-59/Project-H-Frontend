@@ -56,7 +56,6 @@ export default function ContactSection() {
       })
 
       const responseData = await response.json()
-      console.log('Response Data:', responseData)
 
       if (response.status === 201) {
         toast.success('Message sent successfully!')
