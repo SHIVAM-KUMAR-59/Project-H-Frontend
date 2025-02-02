@@ -21,7 +21,7 @@ const handler = async (
       return res.status(400).json({ message: 'User already exists' })
     }
 
-    const newUser = new waitlistUser({ name, email })
+    const newUser = new waitlistUser({ name, email, message: null })
     await newUser.save()
 
     return res

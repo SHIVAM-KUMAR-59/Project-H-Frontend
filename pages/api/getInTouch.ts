@@ -31,7 +31,7 @@ const handler = async (
 
     // If user doesn't exist, create a new one
     if (!user) {
-      user = new waitlistUser({ name, email })
+      user = new waitlistUser({ name, email, message: null })
     }
 
     console.log('User found', user)
@@ -43,7 +43,7 @@ const handler = async (
         .json({ message: 'Sorry, you have already sent a message' })
     }
 
-    // ✅ Fix: Save the new message
+    // Save the new message
     user.message = message
     console.log(user)
     await user.save()

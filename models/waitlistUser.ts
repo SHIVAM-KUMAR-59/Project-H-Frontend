@@ -14,6 +14,7 @@ const WaitlistUserSchema = new mongoose.Schema(
     // To store the messages
     message: {
       type: String,
+      default: null,
     },
   },
   { timestamps: true },
