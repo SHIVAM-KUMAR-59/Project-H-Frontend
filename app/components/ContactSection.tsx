@@ -74,7 +74,10 @@ export default function ContactSection() {
 
   return (
     <>
-      <section id="contact" className="relative bg-zinc-900/50 max-h-screen">
+      <section
+        id="contact"
+        className="relative bg-zinc-900/50 max-h-screen border-2 border-white lg:py-12"
+      >
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_70%,rgba(59,130,246,0.1),transparent_50%)]" />
         <div className="container relative lg:max-h-screen flex items-center py-6 lg:py-20">
           <div className="w-full">

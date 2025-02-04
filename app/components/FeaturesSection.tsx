@@ -2,7 +2,19 @@
 
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import { Shield, Zap, Bell, RefreshCw } from 'lucide-react'
+import {
+  Shield,
+  Zap,
+  Bell,
+  RefreshCw,
+  Video,
+  Users,
+  Briefcase,
+  Bot,
+  MessageCircle,
+  Trophy,
+  Sliders,
+} from 'lucide-react'
 import FlipMove from 'react-flip-move'
 import Slider from 'react-slick'
 import InfiniteCarousel from './InfiniteCarousel'
@@ -54,31 +66,61 @@ export default function FeaturesSection() {
   const featureCards = [
     {
       icon: <Shield className="w-6 h-6 text-blue-400" />,
-      title: 'Secure by Design',
+      title: 'Engaging Feed',
       description:
-        'Built with security at its core, ensuring your data stays protected.',
+        'Experience a dynamic feed where you can share and view text, images, videos, and documents—much like Instagram or LinkedIn. Stay updated with real-time posts and interactive content that keeps you informed and connected.',
     },
     {
-      icon: <Zap className="w-6 h-6 text-purple-400" />,
-      title: 'Lightning Fast',
-      description: 'Optimized performance for seamless user experience.',
+      icon: <Video className="w-6 h-6 text-red-400" />,
+      title: 'Short Video Learning (Reels)',
+      description:
+        'Discover and share bite-sized educational videos. Our Reels feature makes learning on-the-go simple and fun, offering quick insights and tutorials on a wide range of topics.',
     },
+    // {
+    //   icon: <Users className="w-6 h-6 text-indigo-400" />,
+    //   title: 'Live Webinars & Q&A',
+    //   description:
+    //     'Join live sessions hosted by industry experts. Participate in interactive webinars and Q&A sessions that provide valuable insights, helping you stay ahead in your career and expand your professional knowledge.',
+    // },
     {
-      icon: <Bell className="w-6 h-6 text-pink-400" />,
-      title: 'Smart Notifications',
-      description: 'Stay updated with intelligent and timely alerts.',
+      icon: <Briefcase className="w-6 h-6 text-yellow-400" />,
+      title: 'Job Listings & Referrals',
+      description:
+        'Find tailored job opportunities, referrals, and company postings that match your skills and career goals. SkillArc makes it easier to discover roles and network with potential employers in your industry.',
     },
+    // {
+    //   icon: <Bot className="w-6 h-6 text-purple-400" />,
+    //   title: 'AI-Powered Assistance',
+    //   description:
+    //     'Get personalized career guidance with our AI-driven features. From resume reviews to smart job recommendations, SkillArc uses advanced technology to support your career growth and professional development.',
+    // },
+    // {
+    //   icon: <MessageCircle className="w-6 h-6 text-teal-400" />,
+    //   title: '1-on-1 Messaging & Group Chats',
+    //   description:
+    //     'Connect securely with professionals, mentors, and peers. Our messaging system supports one-on-one conversations and group chats, ensuring you have a reliable platform for networking and collaboration.',
+    // },
+    // {
+    //   icon: <Trophy className="w-6 h-6 text-orange-400" />,
+    //   title: 'Gamified Learning',
+    //   description:
+    //     'Boost your skills through a fun, gamified learning experience. Earn badges, climb leaderboards, and achieve ranks based on your activity—turning your learning journey into an engaging and rewarding adventure.',
+    // },
     {
-      icon: <RefreshCw className="w-6 h-6 text-green-400" />,
-      title: 'Real-time Sync',
-      description: 'Your data is always synced across all your devices.',
+      icon: <Sliders className="w-6 h-6 text-pink-400" />,
+      title: 'Customizable Preferences',
+      description:
+        'Tailor your experience to match your interests. With SkillArc, you can customize your feed, notifications, and learning path to ensure that you see the content that matters most to you.',
     },
   ]
 
   return (
-    <section id="features" className="relative overflow-hidden">
+    <section
+      id="features"
+      className="relative min-h-screen border-2 border-white py-12"
+    >
       <div className="absolute inset-0 bg-gradient-to-b from-zinc-900/0 via-zinc-900/50 to-zinc-900/0" />
-      <div className="container relative lg:max-h-screen flex items-center py-10 sm:py-16 lg:py-20">
+      <div className="container relative lg:max-h-screen flex items-center py-10 sm:py-16 lg:py-20 lg:mb-10">
         <div className="w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
             {/* Left side - Features */}
