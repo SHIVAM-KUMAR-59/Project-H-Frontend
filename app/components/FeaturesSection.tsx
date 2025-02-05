@@ -14,9 +14,11 @@ import {
 } from 'lucide-react'
 import FlipMove from 'react-flip-move'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Pagination } from 'swiper/modules'
+import { Pagination, Autoplay } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/pagination'
+import 'swiper/css/autoplay'
+import FeatureCarousel from './FeatureCarousel'
 
 const API_URL = '/api/getAllUser'
 
@@ -209,28 +211,7 @@ export default function FeaturesSection() {
             </div>
 
             {/* Mobile view */}
-            <div className="lg:hidden">
-              <Swiper
-                modules={[Pagination]}
-                spaceBetween={20}
-                slidesPerView={1}
-                pagination={{ clickable: true }}
-              >
-                {featureCards.map(({ icon, title, description }, idx) => (
-                  <SwiperSlide key={idx}>
-                    <div className="group space-y-4 p-4 sm:p-6 rounded-2xl bg-zinc-900/50 border border-zinc-800/50 hover:bg-zinc-800/50 transition-colors">
-                      <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-                        {icon}
-                      </div>
-                      <h3 className="text-lg sm:text-xl font-semibold text-white">
-                        {title}
-                      </h3>
-                      <p className="text-gray-400">{description}</p>
-                    </div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            </div>
+            <FeatureCarousel featureCards={featureCards} />
           </div>
         </div>
       </div>

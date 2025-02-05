@@ -93,10 +93,8 @@ body {
   }
 }
 
-
-
 .scrollbar-hide::-webkit-scrollbar {
-  display: none;  /* Chrome, Safari and Opera */
+  display: none; /* Chrome, Safari and Opera */
 }
 
 /* Custom Toast Styles */
