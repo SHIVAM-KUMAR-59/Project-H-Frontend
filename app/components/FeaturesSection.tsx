@@ -1,17 +1,28 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { motion } from 'framer-motion'
-import { Shield, Video, Briefcase, Sliders } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+import {
+  Shield,
+  Video,
+  Briefcase,
+  Sliders,
+  MessageCircle,
+  Bot,
+  Users,
+  Trophy,
+} from 'lucide-react'
 import FlipMove from 'react-flip-move'
-import InfiniteCarousel from './InfiniteCarousel'
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Pagination } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/pagination'
 
 const API_URL = '/api/getAllUser'
 
 export default function FeaturesSection() {
   const [auditLogs, setAuditLogs] = useState<{ name: string }[]>([])
+  const [activeSet, setActiveSet] = useState(0)
 
   useEffect(() => {
     const fetchWaitlist = async () => {
@@ -41,14 +52,12 @@ export default function FeaturesSection() {
     return () => clearInterval(interval)
   }, [])
 
-  const sliderSettings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: false,
-  }
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveSet((prev) => (prev === 0 ? 1 : 0))
+    }, 5000)
+    return () => clearInterval(timer)
+  }, [])
 
   const featureCards = [
     {
@@ -64,10 +73,34 @@ export default function FeaturesSection() {
         'Discover and share bite-sized educational videos. Our Reels feature makes learning on-the-go simple and fun, offering quick insights and tutorials on a wide range of topics.',
     },
     {
+      icon: <Users className="w-6 h-6 text-indigo-400" />,
+      title: 'Live Webinars & Q&A',
+      description:
+        'Join live sessions hosted by industry experts. Participate in interactive webinars and Q&A sessions that provide valuable insights, helping you stay ahead in your career and expand your professional knowledge.',
+    },
+    {
       icon: <Briefcase className="w-6 h-6 text-yellow-400" />,
       title: 'Job Listings & Referrals',
       description:
         'Find tailored job opportunities, referrals, and company postings that match your skills and career goals. SkillArc makes it easier to discover roles and network with potential employers in your industry.',
+    },
+    {
+      icon: <Bot className="w-6 h-6 text-purple-400" />,
+      title: 'AI-Powered Assistance',
+      description:
+        'Get personalized career guidance with our AI-driven features. From resume reviews to smart job recommendations, SkillArc uses advanced technology to support your career growth and professional development.',
+    },
+    {
+      icon: <MessageCircle className="w-6 h-6 text-teal-400" />,
+      title: '1-on-1 Messaging & Group Chats',
+      description:
+        'Connect securely with professionals, mentors, and peers. Our messaging system supports one-on-one conversations and group chats, ensuring you have a reliable platform for networking and collaboration.',
+    },
+    {
+      icon: <Trophy className="w-6 h-6 text-orange-400" />,
+      title: 'Gamified Learning',
+      description:
+        'Boost your skills through a fun, gamified learning experience. Earn badges, climb leaderboards, and achieve ranks based on your activity—turning your learning journey into an engaging and rewarding adventure.',
     },
     {
       icon: <Sliders className="w-6 h-6 text-pink-400" />,
@@ -139,29 +172,68 @@ export default function FeaturesSection() {
             </motion.div>
           </div>
 
-          {/* Feature Cards - 2x2 grid on large screens, full width on small screens */}
-          <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-8">
-            {featureCards.map(({ icon, title, description }, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="group space-y-4 p-4 sm:p-6 rounded-2xl bg-zinc-900/50 border border-zinc-800/50 hover:bg-zinc-800/50 transition-colors"
+          {/* Feature Cards - 2x2 grid on large screens, slider on small screens */}
+          <div className="lg:col-span-2">
+            {/* Desktop view */}
+            <div className="hidden lg:block relative h-[600px]">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeSet}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="grid grid-cols-2 gap-4 md:gap-8 absolute inset-0"
+                >
+                  {featureCards
+                    .slice(activeSet * 4, activeSet * 4 + 4)
+                    .map(({ icon, title, description }, idx) => (
+                      <motion.div
+                        key={idx + activeSet * 4}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: idx * 0.1 }}
+                        className="group space-y-4 p-4 sm:p-6 rounded-2xl bg-zinc-900/50 border border-zinc-800/50 hover:bg-zinc-800/50 transition-colors"
+                      >
+                        <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                          {icon}
+                        </div>
+                        <h3 className="text-lg sm:text-xl font-semibold text-white">
+                          {title}
+                        </h3>
+                        <p className="text-gray-400">{description}</p>
+                      </motion.div>
+                    ))}
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* Mobile view */}
+            <div className="lg:hidden">
+              <Swiper
+                modules={[Pagination]}
+                spaceBetween={20}
+                slidesPerView={1}
+                pagination={{ clickable: true }}
               >
-                <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-                  {icon}
-                </div>
-                <h3 className="text-lg sm:text-xl font-semibold text-white">
-                  {title}
-                </h3>
-                <p className="text-gray-400">{description}</p>
-              </motion.div>
-            ))}
+                {featureCards.map(({ icon, title, description }, idx) => (
+                  <SwiperSlide key={idx}>
+                    <div className="group space-y-4 p-4 sm:p-6 rounded-2xl bg-zinc-900/50 border border-zinc-800/50 hover:bg-zinc-800/50 transition-colors">
+                      <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        {icon}
+                      </div>
+                      <h3 className="text-lg sm:text-xl font-semibold text-white">
+                        {title}
+                      </h3>
+                      <p className="text-gray-400">{description}</p>
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
           </div>
         </div>
       </div>
-      <InfiniteCarousel section="features" />
     </section>
   )
 }
