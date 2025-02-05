@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Instagram, Github, Linkedin, Share2 } from 'lucide-react'
+import { Instagram, Github, Twitter, Share2 } from 'lucide-react'
 import { useState } from 'react'
 
 export default function SocialMediaButtons() {
@@ -12,27 +12,27 @@ export default function SocialMediaButtons() {
       icon: Instagram,
       href: 'https://instagram.com/your-handle',
       color: 'text-pink-400 hover:shadow-[0_0_25px_rgba(236,72,153,0.6)]',
-      label: 'Instagram'
+      label: 'Instagram',
     },
     {
       icon: Github,
       href: 'https://github.com/your-username',
       color: 'text-gray-400 hover:shadow-[0_0_25px_rgba(156,163,175,0.6)]',
-      label: 'GitHub'
+      label: 'GitHub',
     },
     {
-      icon: Linkedin,
-      href: 'https://linkedin.com/in/your-profile',
+      icon: Twitter,
+      href: 'https://x.com/SkillArcNetwork/media',
       color: 'text-blue-400 hover:shadow-[0_0_25px_rgba(59,130,246,0.6)]',
-      label: 'LinkedIn'
-    }
+      label: 'LinkedIn',
+    },
   ]
 
   return (
     <div className="fixed left-6 bottom-5 z-50">
       <motion.div
         initial={false}
-        animate={isOpen ? "open" : "closed"}
+        animate={isOpen ? 'open' : 'closed'}
         className="relative"
       >
         {/* Social Media Icons */}
@@ -80,4 +80,4 @@ export default function SocialMediaButtons() {
       </motion.div>
     </div>
   )
-} 
+}
